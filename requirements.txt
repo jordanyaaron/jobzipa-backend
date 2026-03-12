@@ -1,7 +1,7 @@
 Django==5.2.8
 psycopg2-binary==2.9.11
 dj-database-url==3.1.2
-djangorestframework==3.16.1
 python-decouple==3.8
 boto3==1.42.62
+django-cors-headers==4.9.0
 gunicorn
