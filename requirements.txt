@@ -4,4 +4,5 @@ dj-database-url==3.1.2
 python-decouple==3.8
 boto3==1.42.62
 django-cors-headers==4.9.0
+djangorestframework==3.16.1
 gunicorn
