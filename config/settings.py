@@ -1,13 +1,17 @@
 import os
 from decouple import config
 from pathlib import Path
-
 from datetime import timedelta
+
+
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+DEBUG = config("DEBUG", default=False, cast=bool)
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 FRONTEND_WEB_APP_NAME="Jobzipa"
 
