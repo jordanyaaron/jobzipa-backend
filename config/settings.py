@@ -11,14 +11,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 FRONTEND_WEB_APP_NAME="Jobzipa"
 
-# 
+# superuser info
+DJANGO_SUPERUSER_USERNAME=config(DJANGO_SUPERUSER_USERNAME)
+DJANGO_SUPERUSER_EMAIL=config(DJANGO_SUPERUSER_EMAIL)
+DJANGO_SUPERUSER_PASSWORD=config(DJANGO_SUPERUSER_PASSWORD)
+
+# amazon
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
 AWS_REGION = config("AWS_REGION")
 AWS_S3_BUCKET_NAME = config("AWS_S3_BUCKET_NAME")
 AWS_S3_BASE_URL = config("AWS_S3_BASE_URL")
 
-
+# email
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST = config("EMAIL_HOST")
