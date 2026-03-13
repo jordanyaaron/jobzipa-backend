@@ -195,6 +195,8 @@ class LoginView(APIView):
                 "email": user.email,
                 "username": user.username,
                 "is_superuser": user.is_superuser,
-                "is_staff": True,
+                "is_admin": user.is_admin,
+                "is_superstaff": user.is_super_staff,
+                "is_staff": user.is_staff,
             }
         })

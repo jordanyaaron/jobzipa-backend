@@ -102,6 +102,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         default=Roles.STAFF
     )
 
+    @property
+    def is_admin(self):
+        return self.role == Roles.ADMIN
+
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=True)  # kwa sasa wote ni staff
     is_super_staff = models.BooleanField(default=False)
