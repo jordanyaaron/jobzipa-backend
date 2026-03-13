@@ -76,9 +76,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ALLOWED_HOSTS = [
-    config("ALLOWED_HOSTS").split(",")
-]
+ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
