@@ -39,7 +39,7 @@ DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 
 
 
-FRONTEND_URL='http://localhost:5173/'
+FRONTEND_URL='https://jobzipa-frontend.vercel.app/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
