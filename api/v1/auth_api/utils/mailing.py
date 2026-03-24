@@ -16,16 +16,14 @@ def send_staff_invitation_email(user, request):
     complete_registrasion_url = f"{settings.FRONTEND_URL}complete-registration?uid={uid}&token={token}"
 
     subject = "Complete Registration"
-    message = f"""
-        
-        Hello!
-
-        We are so exited to invite you to join our team at {settings.FRONTEND_WEB_APP_NAME} 🚀 please tap the link below to complete registresion. \n
-        {complete_registrasion_url}
-
-        if you didn't request invitation please ignore this email.
-        thank you!
-    """
+    message = (
+        f"Hello!\n\n"
+        f"We are so excited to invite you to join our team at {settings.FRONTEND_WEB_APP_NAME} 🚀.\n"
+        f"Please tap the link below to complete registration:\n"
+        f"{complete_registrasion_url}\n\n"
+        f"If you didn't request this invitation, please ignore this email.\n"
+        f"Thank you!"
+    )
 
     send_mail(
         subject,
