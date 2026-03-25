@@ -39,7 +39,7 @@ DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 
 
 
-FRONTEND_URL='https://jobzipa-frontend.vercel.app/'
+FRONTEND_URL='https://trial.jobzipa.com/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -91,7 +91,8 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://jobzipa-frontend.vercel.app/"
+    "https://jobzipa-frontend.vercel.app/",
+    "https://trial.jobzipa.com/"
 ]
 
 ROOT_URLCONF = 'config.urls'
