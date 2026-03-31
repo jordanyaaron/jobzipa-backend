@@ -91,8 +91,8 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://jobzipa-frontend.vercel.app/",
-    "https://prototype.jobzipa.com/"
+    "https://jobzipa-frontend.vercel.app",
+    "https://prototype.jobzipa.com"
 ]
 
 ROOT_URLCONF = 'config.urls'
