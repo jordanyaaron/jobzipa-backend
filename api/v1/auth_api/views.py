@@ -192,11 +192,13 @@ class LoginView(APIView):
             "access": str(refresh.access_token),
             "user": {
                 "id": user.id,
+                "first_name" : user.first_name,
+                "last_name" : user.last_name ,
                 "email": user.email,
                 "username": user.username,
                 "is_superuser": user.is_superuser,
                 "is_admin": user.is_admin,
-                "is_superstaff": user.is_super_staff,
+                "is_official": user.is_super_staff,
                 "is_staff": user.is_staff,
             }
         })
