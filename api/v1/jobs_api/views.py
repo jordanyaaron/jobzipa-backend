@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated , AllowAny
 from datetime import datetime, time
+from django.utils import timezone
+from .models import Job
 
 from .utils.storage import upload_logo_to_bucket
 
@@ -45,6 +47,9 @@ class JobCreateView(APIView):
 
             if actual_date:
                 actual_date = datetime.combine(actual_date, time(0,0))
+            
+            if not actual_date:
+                actual_date = deadline_date = timezone.now()
 
             if deadline_date:
                 deadline_date = datetime.combine(deadline_date, time(18,0))
@@ -71,6 +76,16 @@ class JobCreateView(APIView):
                 status=status.HTTP_201_CREATED
             )
 
-        print(serializer.errors)
 
         return Response(serializer.errors, status=400)
+
+
+
+
+class JobListView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        jobs = Job.objects.filter(is_active=True).order_by("-actual_date")
+        serializer = JobSerializer(jobs, many=True)
+        return Response(serializer.data)
