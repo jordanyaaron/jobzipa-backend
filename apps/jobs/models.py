@@ -51,9 +51,9 @@ class Job(models.Model):
         null=True
     )
 
-    actual_date = models.DateField(blank=True, null=True)
+    actual_date = models.DateTimeField(blank=True, null=True)
 
-    deadline_date = models.DateField(blank=True, null=True)
+    deadline_date = models.DateTimeField(blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
