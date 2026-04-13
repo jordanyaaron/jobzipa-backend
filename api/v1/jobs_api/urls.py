@@ -6,5 +6,5 @@ from .views import(
 
 urlpatterns = [
     path("create/", JobCreateView.as_view(), name="create-job"),
-    path("jobs/", JobListView.as_view(), name="get-jobs"),
+    path("get/", JobListView.as_view(), name="get-jobs"),
 ]
