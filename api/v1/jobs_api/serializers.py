@@ -3,10 +3,6 @@ from django.contrib.auth import authenticate
 from apps.jobs.models import Job
 
 class JobSerializer(serializers.ModelSerializer):
-    company_logo = serializers.ImageField(
-        write_only=True,
-        required=False
-    )
     class Meta:
         model = Job
         fields = "__all__"
