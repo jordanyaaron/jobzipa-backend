@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated , AllowAny
 from datetime import datetime, time
 from django.utils import timezone
-from apps.jobs.models import job
+from apps.jobs.models import Job
 
 from .utils.storage import upload_logo_to_bucket
 
