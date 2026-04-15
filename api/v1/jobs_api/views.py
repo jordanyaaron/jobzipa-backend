@@ -80,8 +80,6 @@ class JobCreateView(APIView):
         return Response(serializer.errors, status=400)
 
 
-
-
 class JobListView(APIView):
     permission_classes = [AllowAny]
 
@@ -89,3 +87,16 @@ class JobListView(APIView):
         jobs = Job.objects.filter(is_active=True).order_by("-actual_date")
         serializer = JobSerializer(jobs, many=True)
         return Response(serializer.data)
+
+
+class JobDetailView(RetrieveAPIView):
+    queryset = Job.objects.filter(is_active=True)
+    serializer_class = JobSerializer
+    permission_classes = [AllowAny]
+
+    lookup_field = "public_id"
+
+
+
+
+
