@@ -93,7 +93,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://jobzipa-frontend.vercel.app",
     "https://prototype.jobzipa.com",
-    "https://prototype.jobzipa.com/",
+    "https://www.jobzipa.com",
 ]
 
 ROOT_URLCONF = 'config.urls'
