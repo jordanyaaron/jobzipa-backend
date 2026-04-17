@@ -14,7 +14,6 @@ from .utils.storage import upload_logo_to_bucket
 from .serializers import (
     JobSerializer
 )
-
 from rest_framework.permissions import BasePermission
 
 class IsStaffUser(BasePermission):
