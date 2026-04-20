@@ -4,7 +4,7 @@ from apps.jobs.models import Job
 
 
 class JobSerializer(serializers.ModelSerializer):
-    company_logo = serializers.URLField(required=False, allow_null=True, write_only=True)
+    company_logo = serializers.SerializerMethodField()  # 👈 for output only
 
     class Meta:
         model = Job
@@ -15,4 +15,8 @@ class JobSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
             "is_active",
+            "company_logo"  # 👈 muhimu
         ]
+
+    def get_company_logo(self, obj):
+        return obj.company_logo
