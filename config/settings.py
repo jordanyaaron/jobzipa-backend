@@ -4,6 +4,8 @@ from decouple import config
 import dj_database_url
 from datetime import timedelta
 
+ROOT_URLCONF = 'config.urls'
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # =========================
@@ -66,7 +68,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # 🔥 TEMP DEBUG (REMOVE LATER IN PROD IF YOU WANT STRICT SECURITY)
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True 
 
 # CORS_ALLOW_CREDENTIALS = True
 
