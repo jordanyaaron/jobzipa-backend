@@ -94,11 +94,12 @@ class JobListView(APIView):
         if query:
             jobs = jobs.filter(
                 Q(title__icontains=query) |
+                Q(company__icontains=query) |
                 Q(description__icontains=query) |
                 Q(location__icontains=query)
             )
 
-        # 👇 IMPORTANT: usiweke none()
+        # 👇 Send Jobs
         jobs = jobs.order_by("-actual_date")
 
         serializer = JobSerializer(jobs, many=True)
