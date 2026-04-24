@@ -82,6 +82,7 @@ class JobCreateView(APIView):
 
 
 
+
 class JobListView(APIView):
     permission_classes = [AllowAny]
 
@@ -97,14 +98,11 @@ class JobListView(APIView):
                 Q(location__icontains=query)
             )
 
-        else:
-            jobs = jobs.none()  # 🔥 avoid returning all jobs
-
+        # 👇 IMPORTANT: usiweke none()
         jobs = jobs.order_by("-actual_date")
 
         serializer = JobSerializer(jobs, many=True)
         return Response(serializer.data)
-
 class JobDetailView(RetrieveAPIView):
     queryset = Job.objects.filter(is_active=True)
     serializer_class = JobSerializer
