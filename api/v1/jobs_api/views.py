@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated , AllowAny
 from datetime import datetime, time
 from django.utils import timezone
 from apps.jobs.models import Job
+from django.db.models import Q
 
 from .utils.storage import upload_logo_to_bucket
 
@@ -80,14 +81,29 @@ class JobCreateView(APIView):
         return Response(serializer.errors, status=400)
 
 
+
 class JobListView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
-        jobs = Job.objects.filter(is_active=True).order_by("-actual_date")
+        query = request.GET.get("search", "").strip()
+
+        jobs = Job.objects.filter(is_active=True)
+
+        if query:
+            jobs = jobs.filter(
+                Q(title__icontains=query) |
+                Q(description__icontains=query) |
+                Q(location__icontains=query)
+            )
+
+        else:
+            jobs = jobs.none()  # 🔥 avoid returning all jobs
+
+        jobs = jobs.order_by("-actual_date")
+
         serializer = JobSerializer(jobs, many=True)
         return Response(serializer.data)
-
 
 class JobDetailView(RetrieveAPIView):
     queryset = Job.objects.filter(is_active=True)
