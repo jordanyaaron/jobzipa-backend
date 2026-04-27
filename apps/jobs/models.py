@@ -27,6 +27,19 @@ class Job(models.Model):
 
     description = models.TextField()
 
+        description_summary = models.TextField(
+        blank=True,
+        null=True,
+        max_length=300
+    )
+
+    company_code = models.CharField(
+        max_length=50,
+        db_index=True,
+        blank=True,
+        null=True
+    )
+
     location = models.JSONField(blank=True, null=True)
 
     tags = models.JSONField(default=list, blank=True)
@@ -67,3 +80,47 @@ class Job(models.Model):
             self.actual_date = timezone.now().date()
 
         super().save(*args, **kwargs)
+
+
+
+    class Meta:
+        model = Job
+        fields = [
+            "title",
+            "description",
+            "description_summary",
+            "company_code",
+            "location",
+            "job_type",
+            "job_mode",
+            "application_link",
+        ]
+
+        read_only_fields = [
+            "company",
+            "company_logo",
+            "biography",
+            "posted_by",
+            "public_id",
+            "created_at",
+            "updated_at",
+            "is_active",
+        ]
+
+    def create(self, validated_data):
+        company_code = validated_data.get("company_code")
+
+        # 🔥 CHUKUA DATA KUTOKA DB
+        try:
+            company = Company.objects.get(code=company_code)
+        except Company.DoesNotExist:
+            raise serializers.ValidationError({
+                "company_code": "Invalid company code"
+            })
+
+        # 🔥 MAP DATA
+        validated_data["company"] = company.name
+        validated_data["company_logo"] = company.logo
+        validated_data["biography"] = company.biography
+
+        return super().create(validated_data)

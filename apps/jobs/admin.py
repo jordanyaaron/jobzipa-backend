@@ -18,6 +18,7 @@ class JobAdmin(admin.ModelAdmin):
         "job_type",
         "job_mode",
         "is_active",
+        "company_code",
         "created_at",
     )
 
