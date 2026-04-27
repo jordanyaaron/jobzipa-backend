@@ -27,7 +27,7 @@ class Job(models.Model):
 
     description = models.TextField()
 
-        description_summary = models.TextField(
+    description_summary = models.TextField(
         blank=True,
         null=True,
         max_length=300
