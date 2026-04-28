@@ -39,7 +39,7 @@ class JobCreateMoreView(APIView):
                 {
                     "message": "Job created successfully",
                     "job_id": job.public_id,
-                    "job_id": job.company_code,
+                    "company_code": job.company_code,
                 },
                 status=status.HTTP_201_CREATED
             )
