@@ -48,14 +48,7 @@ class Job(models.Model):
 
     job_mode = models.CharField(max_length=2)
 
-    vacancies = models.PositiveIntegerField(
-        null=True,
-        blank=True
-    )
-
-    is_multiple_hiring = models.BooleanField(
-        default=False
-    )
+    
 
     posted_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
