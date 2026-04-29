@@ -33,7 +33,6 @@ class JobAdmin(admin.ModelAdmin):
         "public_id",
         "created_at",
         "updated_at",
-        "edit_info",
     )
 
     ordering = ("-created_at",)
@@ -53,6 +52,9 @@ class JobAdmin(admin.ModelAdmin):
                 "job_type",
                 "job_mode",
                 "location",
+                "vacancies",
+                "is_multiple_hiring",
+                "edit_info",
                 "tags",
             )
         }),
