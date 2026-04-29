@@ -20,6 +20,8 @@ class JobCreateSerializer(serializers.ModelSerializer):
             "location",
             "job_type",
             "job_mode",
+            "vacancies",
+            "is_multiple_hiring",
             "application_link",
             "actual_date",
             "deadline_date",
