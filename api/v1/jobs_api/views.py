@@ -315,6 +315,8 @@ class JobListView(APIView):
 
         serializer = JobSerializer(jobs, many=True)
         return Response(serializer.data)
+
+        
 class JobDetailView(RetrieveAPIView):
     queryset = Job.objects.filter(is_active=True)
     serializer_class = JobSerializer
